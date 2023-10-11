@@ -22,12 +22,15 @@ const Home = (): ReactElement => {
   }, [user]);
 
   return (
-    <div className="max-w-[77rem] m-auto h-screen flex flex-col justify-center items-center">
+    <div className=" h-screen flex flex-col justify-center items-center bg-gray-100">
       {conversationsData.map((conversation: Conversation, index) => (
         <React.Fragment
           key={`${conversation.recipientId}-${conversation.senderId}`}
         >
-          <Link className="w-full" href={`/conversation/${conversation.id}`}>
+          <Link
+            className="w-3/4 md:w-2/4"
+            href={`/conversation/${conversation.id}`}
+          >
             <List conversation={conversation} userId={user} />
           </Link>
         </React.Fragment>

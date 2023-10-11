@@ -6,9 +6,7 @@ type Props = {};
 const ConversationPage = ({ messages }) => {
   const router = useRouter();
 
-  return (
-    <div className="max-w-[77.5rem] m-auto">{<Chat messages={messages} />}</div>
-  );
+  return <div className="bg-gray-100">{<Chat messages={messages} />}</div>;
 };
 
 export default ConversationPage;

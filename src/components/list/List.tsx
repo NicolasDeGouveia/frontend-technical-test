@@ -17,7 +17,7 @@ const List = ({ conversation, userId }: ListProps) => {
   const day = date.getDate();
 
   return (
-    <div className="border border-black p-4 my-4 rounded-lg w-2/4 mx-auto">
+    <div className="border border-black p-4 my-4 rounded-lg  mx-auto bg-white max-w-[77rem] m-auto">
       <div className="flex flex-col">
         <div className="font-bold">
           {conversation.recipientId === userId

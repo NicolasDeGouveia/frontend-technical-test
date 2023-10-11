@@ -37,7 +37,7 @@ const Chat = ({ messages }: ChatProps) => {
   }, []);
 
   return (
-    <div className="flex h-screen  flex-col bg-gray-100">
+    <div className="max-w-[77.5rem] m-auto flex h-screen  flex-col ">
       <div className="flex-grow overflow-y-auto">
         <div className="flex flex-col space-y-2 p-4">
           {/* <!-- Individual chat message --> */}
