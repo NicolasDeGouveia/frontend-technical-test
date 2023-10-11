@@ -11,7 +11,6 @@ type ListProps = {
 const List = ({ conversation, userId }: ListProps) => {
   // Convert the timestamp to a Date object
   const date = new Date(conversation.lastMessageTimestamp * 1000);
-  console.log(userId);
 
   // Get the month and day
   const month = date.toLocaleString("en-US", { month: "short" }); // Change 'short' to 'long' for the full month name

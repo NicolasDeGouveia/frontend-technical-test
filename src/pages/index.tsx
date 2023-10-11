@@ -2,6 +2,7 @@ import React, { useEffect, type ReactElement, useState } from "react";
 import { getLoggedUserId } from "../utils/getLoggedUserId";
 import List from "../components/list/List";
 import { Conversation } from "../types/conversation";
+import Link from "next/link";
 
 const Home = (): ReactElement => {
   const [conversationsData, setConversationsData] = useState<Conversation[]>(
@@ -26,7 +27,9 @@ const Home = (): ReactElement => {
         <React.Fragment
           key={`${conversation.recipientId}-${conversation.senderId}`}
         >
-          <List conversation={conversation} userId={user} />
+          <Link className="w-full" href={`/conversation/${conversation.id}`}>
+            <List conversation={conversation} userId={user} />
+          </Link>
         </React.Fragment>
       ))}
     </div>
