@@ -32,22 +32,26 @@ const Home = (): ReactElement => {
 
   return (
     <>
-      <div
-        className="flex justify-center mb-4"
-        onClick={() => setToggleButton(true)}
-      >
-        <button>Nouvelle conversation</button>
-      </div>
-      {error && <Error errorMessage={error} />}
-      {success && <Success successMessage={success} />}
-      {toggleButton && (
-        <CreateConversation
-          conversations={conversationsData}
-          setError={setError}
-          setRefreshData={setRefreshData}
-          setToggleButton={setToggleButton}
-          setSuccess={setSuccess}
-        />
+      {user && (
+        <>
+          <div
+            className="flex justify-center mb-4"
+            onClick={() => setToggleButton(true)}
+          >
+            <button>Nouvelle conversation</button>
+          </div>
+          {error && <Error errorMessage={error} />}
+          {success && <Success successMessage={success} />}
+          {toggleButton && (
+            <CreateConversation
+              conversations={conversationsData}
+              setError={setError}
+              setRefreshData={setRefreshData}
+              setToggleButton={setToggleButton}
+              setSuccess={setSuccess}
+            />
+          )}
+        </>
       )}
       <div className="flex flex-col items-center justify-center h-screen">
         {user && (

@@ -15,6 +15,7 @@ type AuthContextType = {
   login: (event: React.FormEvent<HTMLFormElement>, nickname: string) => void;
   logout: () => void;
   allUsers: User[];
+  errorFetchUser: string | null;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -26,6 +27,7 @@ type AuthProviderProps = {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [allUsers, setAllUsers] = useState<User[]>([]); // State to store all users
+  const [errorFetchUser, setErrorFetchUser] = useState<string>(undefined);
 
   useEffect(() => {
     // Fetch all users when the component mounts
@@ -70,6 +72,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setUser(userInDatabase);
       localStorage.setItem("userToken", userInDatabase.token);
       setCookie("userToken", userInDatabase.token);
+    } else if (!userInDatabase) {
+      setErrorFetchUser("Cet utilisateur est introuvable.");
+    } else {
+      setErrorFetchUser(
+        "Une erreur est survenue lors de la tentative de connexion"
+      );
     }
   };
 
@@ -84,6 +92,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     login,
     logout,
     allUsers,
+    errorFetchUser,
   };
 
   return (
