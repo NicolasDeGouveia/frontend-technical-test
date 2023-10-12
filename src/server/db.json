@@ -23,22 +23,6 @@
       "senderId": 4,
       "senderNickname": "Elodie",
       "lastMessageTimestamp": 1625648667
-    },
-    {
-      "id": 4,
-      "recipientId": 5,
-      "recipientNickname": "Jean",
-      "senderId": 1,
-      "senderNickname": "Thibaut",
-      "lastMessageTimestamp": 1625648680
-    },
-    {
-      "senderId": 1,
-      "senderNickname": "Thibaut",
-      "recipientId": 11,
-      "recipientNickname": "Michelle",
-      "lastMessageTimestamp": 1625637870,
-      "id": 5
     }
   ],
   "messages": [
@@ -126,16 +110,6 @@
       "id": 4,
       "nickname": "Elodie",
       "token": "dummyToken456"
-    },
-    {
-      "id": 5,
-      "nickname": "Jean",
-      "token": "dummyToken458"
-    },
-    {
-      "id": 6,
-      "nickname": "Michelle",
-      "token": "dummyToken459"
     }
   ]
 }

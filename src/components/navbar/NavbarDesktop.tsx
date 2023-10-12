@@ -31,7 +31,7 @@ const NavbarDesktop = () => {
           >
             <input
               type="text"
-              className="px-4 py-2 mr-4 border-b border-black outline-none"
+              className="px-4 py-2 mr-4 bg-gray-100 border-b border-black outline-none"
               placeholder="Nom d'utilisateur"
               value={userNickname}
               onChange={(e) => setUserNickname(e.target.value)}

@@ -26,7 +26,7 @@ const Home = (): ReactElement => {
   console.log(conversationsData);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 ">
+    <div className="flex flex-col items-center justify-center h-screen">
       {user && (
         <>
           {conversationsData.map((conversation: Conversation, index) => (
