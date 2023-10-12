@@ -6,6 +6,8 @@ import { useAuth } from "../context/AuthContext";
 import CreateConversation from "../components/createconversation/CreateConversation";
 import Error from "../components/error/Error";
 import Success from "../components/success/Success";
+import { useRouter } from "next/router";
+import Button from "../components/generic/Button";
 
 const Home = (): ReactElement => {
   const [conversationsData, setConversationsData] = useState<Conversation[]>(
@@ -19,26 +21,37 @@ const Home = (): ReactElement => {
 
   useEffect(() => {
     async function getConversationByUser(userId: number) {
-      const response = await fetch(
-        `http://localhost:3005/conversations/${userId}`
-      );
-      const data = await response.json();
-      setConversationsData(data);
+      console.log("je fetch");
+      try {
+        const response = await fetch(
+          `http://localhost:3005/conversations/${userId}`
+        );
+        const data = await response.json();
+        setConversationsData(data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     if (user) {
       getConversationByUser(user.id);
     }
+    if (refreshData) {
+      setRefreshData(false);
+    }
   }, [user, refreshData]);
+  console.log(refreshData);
 
   return (
     <>
       {user && (
         <>
           <div
-            className="flex justify-center mb-4"
-            onClick={() => setToggleButton(true)}
+            className="flex justify-center px-4 py-2 m-auto mt-2 mb-4 rounded-lg w-fit"
+            onClick={() => {
+              setToggleButton(true);
+            }}
           >
-            <button>Nouvelle conversation</button>
+            <Button name="Nouvelle Conversation" />
           </div>
           {error && <Error errorMessage={error} />}
           {success && <Success successMessage={success} />}

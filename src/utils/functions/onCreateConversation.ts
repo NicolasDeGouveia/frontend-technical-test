@@ -19,8 +19,8 @@ export async function onCreateConversation(userId: number,selectedRecipient: num
     if (response.ok) {
         setSuccess('La conversation a bien été créé')
         setRefreshData(true)
-      
     } else {
         setError('Un problème est survenu au moment de la création de la conversation. Veuillez réssayer ultérieurement.')
     }
+    
   };

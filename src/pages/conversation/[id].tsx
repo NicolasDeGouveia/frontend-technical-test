@@ -1,11 +1,10 @@
 import React from "react";
 import Chat from "../../components/chat/Chat";
 import { getCookie } from "cookies-next";
-import { getAllUsers } from "../../utils/functions/getAllUsers";
 
 const ConversationPage = ({ messages, conversationId }) => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-200">
       {<Chat messages={messages} conversationId={conversationId} />}
     </div>
   );

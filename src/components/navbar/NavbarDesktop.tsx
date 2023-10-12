@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Error from "../error/Error";
+import Button from "../generic/Button";
 
 const NavbarDesktop = () => {
   const [userNickname, setUserNickname] = useState<string>("");
@@ -13,13 +14,8 @@ const NavbarDesktop = () => {
           <li className="mr-4">
             Bienvenue, <span className="font-bold">{user.nickname}</span>
           </li>
-          <li>
-            <button
-              onClick={logout}
-              className="p-2 border border-black rounded-lg"
-            >
-              Se Deconnecter
-            </button>
+          <li onClick={logout}>
+            <Button name="Se Deconnecter" className="z-10" />
           </li>
         </>
       )}
@@ -42,13 +38,9 @@ const NavbarDesktop = () => {
                 value={userNickname}
                 onChange={(e) => setUserNickname(e.target.value)}
               />
-
-              <button
-                disabled={userNickname.length <= 0}
-                className="p-2 border border-black rounded-lg"
-              >
-                Se Connecter
-              </button>
+              <div>
+                <Button name="Se Connecter" className="z-10" />
+              </div>
             </form>
           </li>
         </>

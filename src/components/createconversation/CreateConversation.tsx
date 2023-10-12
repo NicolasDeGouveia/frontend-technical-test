@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { onCreateConversation } from "../../utils/functions/onCreateConversation";
 import { Conversation } from "../../types/conversation";
+import Button from "../generic/Button";
 
 type CreateConversationProps = {
   conversations: Conversation[];
@@ -79,10 +80,8 @@ const CreateConversation = ({
           </option>
         ))}
       </select>
+
       <button
-        onClick={() => {
-          handleCreateConversation(), setToggleButton(false);
-        }}
         disabled={selectedRecipient === null}
         className="px-4 py-2 border border-black rounded-lg"
       >

@@ -25,12 +25,52 @@
       "lastMessageTimestamp": 1625648667
     },
     {
+      "recipientId": 3,
+      "recipientNickname": "Patrick",
+      "senderId": 2,
+      "senderNickname": "Jeremie",
+      "lastMessageTimestamp": 1697129170,
+      "id": 4
+    },
+    {
+      "recipientId": 4,
+      "recipientNickname": "Elodie",
+      "senderId": 2,
+      "senderNickname": "Jeremie",
+      "lastMessageTimestamp": 1697129178,
+      "id": 5
+    },
+    {
       "recipientId": 5,
       "recipientNickname": "Michelle",
-      "senderId": 1,
-      "senderNickname": "Thibaut",
-      "lastMessageTimestamp": 1697126096,
-      "id": 4
+      "senderId": 2,
+      "senderNickname": "Jeremie",
+      "lastMessageTimestamp": 1697129185,
+      "id": 6
+    },
+    {
+      "recipientId": 1,
+      "recipientNickname": "Thibaut",
+      "senderId": 5,
+      "senderNickname": "Michelle",
+      "lastMessageTimestamp": 1697129199,
+      "id": 7
+    },
+    {
+      "recipientId": 3,
+      "recipientNickname": "Patrick",
+      "senderId": 5,
+      "senderNickname": "Michelle",
+      "lastMessageTimestamp": 1697129205,
+      "id": 8
+    },
+    {
+      "recipientId": 4,
+      "recipientNickname": "Elodie",
+      "senderId": 5,
+      "senderNickname": "Michelle",
+      "lastMessageTimestamp": 1697129251,
+      "id": 9
     }
   ],
   "messages": [
@@ -103,6 +143,20 @@
       "body": "test Patrick",
       "timestamp": 1697127877,
       "id": 14
+    },
+    {
+      "authorId": 5,
+      "conversationId": "7",
+      "body": "Salut Thibaut",
+      "timestamp": 1697129228,
+      "id": 15
+    },
+    {
+      "authorId": 5,
+      "conversationId": "6",
+      "body": "test",
+      "timestamp": 1697131039,
+      "id": 16
     }
   ],
   "users": [
