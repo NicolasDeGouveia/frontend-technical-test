@@ -21,10 +21,9 @@ const Home = (): ReactElement => {
 
   useEffect(() => {
     async function getConversationByUser(userId: number) {
-      console.log("je fetch");
       try {
         const response = await fetch(
-          `http://localhost:3005/conversations/${userId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/conversations/${userId}`
         );
         const data = await response.json();
         setConversationsData(data);
@@ -39,7 +38,6 @@ const Home = (): ReactElement => {
       setRefreshData(false);
     }
   }, [user, refreshData]);
-  console.log(refreshData);
 
   return (
     <>

@@ -2,7 +2,7 @@ export async function onCreateConversation(userId: number,selectedRecipient: num
     // Retrieve the current timestamp  
     const currentTimestamp = Math.floor(Date.now() / 1000);
 
-    const response = await fetch(`http://localhost:3005/conversations/${userId}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversations/${userId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

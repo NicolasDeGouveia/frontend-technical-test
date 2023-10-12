@@ -7,8 +7,6 @@ type Props = {
 };
 
 function Button({ name, className, disable }: Props) {
-  console.log(disable);
-
   return (
     <button
       disabled={disable}

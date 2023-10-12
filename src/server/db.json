@@ -71,6 +71,14 @@
       "senderNickname": "Michelle",
       "lastMessageTimestamp": 1697129251,
       "id": 9
+    },
+    {
+      "recipientId": 3,
+      "recipientNickname": "Patrick",
+      "senderId": 4,
+      "senderNickname": "Elodie",
+      "lastMessageTimestamp": 1697132505,
+      "id": 10
     }
   ],
   "messages": [

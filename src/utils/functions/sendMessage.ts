@@ -4,7 +4,7 @@ export async function SendMessage(conversationId:number, authorId: number,  newM
     // Retrieve the current timestamp  
     const currentTimestamp = Math.floor(Date.now() / 1000);
 
-    const response = await fetch(`http://localhost:3005/messages/${conversationId}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages/${conversationId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

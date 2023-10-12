@@ -24,7 +24,7 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
       for (const authorId of uniqueAuthorIds) {
         if (!authorNameMap[authorId]) {
           const response = await fetch(
-            `http://localhost:3005/user/${authorId}`
+            `${process.env.NEXT_PUBLIC_API_URL}/user/${authorId}`
           );
           if (response.ok) {
             const userData = await response.json();
