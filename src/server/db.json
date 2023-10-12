@@ -23,6 +23,14 @@
       "senderId": 4,
       "senderNickname": "Elodie",
       "lastMessageTimestamp": 1625648667
+    },
+    {
+      "recipientId": 5,
+      "recipientNickname": "Michelle",
+      "senderId": 1,
+      "senderNickname": "Thibaut",
+      "lastMessageTimestamp": 1697119182,
+      "id": 4
     }
   ],
   "messages": [
@@ -88,6 +96,20 @@
       "body": "test",
       "timestamp": 1697108489,
       "id": 13
+    },
+    {
+      "authorId": 5,
+      "conversationId": "4",
+      "body": "Hello Thibaut",
+      "timestamp": 1697119817,
+      "id": 14
+    },
+    {
+      "authorId": 1,
+      "conversationId": "4",
+      "body": "Hello",
+      "timestamp": 1697119833,
+      "id": 15
     }
   ],
   "users": [
@@ -110,6 +132,11 @@
       "id": 4,
       "nickname": "Elodie",
       "token": "dummyToken456"
+    },
+    {
+      "id": 5,
+      "nickname": "Michelle",
+      "token": "dummyToken459"
     }
   ]
 }

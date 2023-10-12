@@ -13,6 +13,7 @@ type AuthContextType = {
   user: User | null;
   login: (event: React.FormEvent<HTMLFormElement>, nickname: string) => void;
   logout: () => void;
+  allUsers: User[];
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -79,6 +80,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     user,
     login,
     logout,
+    allUsers,
   };
 
   return (
