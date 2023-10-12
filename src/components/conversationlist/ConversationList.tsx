@@ -1,14 +1,12 @@
-"use client";
-
 import React from "react";
 import { Conversation } from "../../types/conversation";
 
-type ListProps = {
+type ConversationListProps = {
   conversation: Conversation;
   userId: number;
 };
 
-const List = ({ conversation, userId }: ListProps) => {
+const ConversationList = ({ conversation, userId }: ConversationListProps) => {
   // Convert the timestamp to a Date object
   const date = new Date(conversation.lastMessageTimestamp * 1000);
 
@@ -32,4 +30,4 @@ const List = ({ conversation, userId }: ListProps) => {
   );
 };
 
-export default List;
+export default ConversationList;

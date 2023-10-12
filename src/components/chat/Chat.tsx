@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Message } from "../../types/message";
+import { SendMessage } from "../../utils/functions/sendMessage";
 
 type ChatProps = {
   messages: Message[];
@@ -8,6 +9,8 @@ type ChatProps = {
 const Chat = ({ messages }: ChatProps) => {
   const [messageData, setMessageData] = useState(messages);
   const [authorNameMap, setAuthorNameMap] = useState({});
+  const [newMessage, setNewMessage] = useState<string>("");
+  const conversationId = messages[0].conversationId;
 
   useEffect(() => {
     // Function to fetch user names based on authorId
@@ -63,8 +66,22 @@ const Chat = ({ messages }: ChatProps) => {
           type="text"
           placeholder="Type your message..."
           className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+          onChange={(e) => setNewMessage(e.target.value)}
+          value={newMessage}
         />
-        <button className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg">
+        <button
+          className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg"
+          onClick={() =>
+            SendMessage(
+              conversationId,
+              newMessage,
+              setMessageData,
+              messageData,
+              setNewMessage
+            )
+          }
+          disabled={newMessage === ""}
+        >
           Send
         </button>
       </div>

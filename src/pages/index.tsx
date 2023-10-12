@@ -1,6 +1,6 @@
 import React, { useEffect, type ReactElement, useState } from "react";
 import { getLoggedUserId } from "../utils/getLoggedUserId";
-import List from "../components/list/List";
+import List from "../components/conversationlist/ConversationList";
 import { Conversation } from "../types/conversation";
 import Link from "next/link";
 
@@ -22,7 +22,7 @@ const Home = (): ReactElement => {
   }, [user]);
 
   return (
-    <div className=" h-screen flex flex-col justify-center items-center bg-gray-100">
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 ">
       {conversationsData.map((conversation: Conversation, index) => (
         <React.Fragment
           key={`${conversation.recipientId}-${conversation.senderId}`}
