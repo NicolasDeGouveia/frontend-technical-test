@@ -1,7 +1,7 @@
 import React from "react";
 import Chat from "../../components/chat/Chat";
 import { getCookie } from "cookies-next";
-import { notFound } from "next/navigation";
+import { getAllUsers } from "../../utils/functions/getAllUsers";
 
 const ConversationPage = ({ messages, conversationId }) => {
   return (

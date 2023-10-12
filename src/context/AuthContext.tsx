@@ -9,6 +9,7 @@ import React, {
 import { User } from "../types/user";
 import { getAllUsers } from "../utils/functions/getAllUsers";
 import { deleteCookie, setCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 type AuthContextType = {
   user: User | null;
@@ -28,6 +29,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [allUsers, setAllUsers] = useState<User[]>([]); // State to store all users
   const [errorFetchUser, setErrorFetchUser] = useState<string>(undefined);
+  const router = useRouter();
 
   useEffect(() => {
     // Fetch all users when the component mounts
@@ -85,6 +87,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null);
     localStorage.removeItem("userToken");
     deleteCookie("userToken");
+    router.replace(router.asPath);
   };
 
   const contextValue: AuthContextType = {
