@@ -6,7 +6,7 @@
       "recipientNickname": "Jeremie",
       "senderId": 1,
       "senderNickname": "Thibaut",
-      "lastMessageTimestamp": 1625637849
+      "lastMessageTimestamp": 1625637850
     },
     {
       "id": 2,
@@ -23,6 +23,22 @@
       "senderId": 4,
       "senderNickname": "Elodie",
       "lastMessageTimestamp": 1625648667
+    },
+    {
+      "id": 4,
+      "recipientId": 5,
+      "recipientNickname": "Jean",
+      "senderId": 1,
+      "senderNickname": "Thibaut",
+      "lastMessageTimestamp": 1625648680
+    },
+    {
+      "senderId": 1,
+      "senderNickname": "Thibaut",
+      "recipientId": 11,
+      "recipientNickname": "Michelle",
+      "lastMessageTimestamp": 1625637870,
+      "id": 5
     }
   ],
   "messages": [
@@ -56,32 +72,6 @@
     },
     {
       "authorId": 1,
-      "conversationId": 1,
-      "body": "Bonjour c'est un test",
-      "timestamp": 1625648675,
-      "id": 5
-    },
-    {
-      "authorId": 1,
-      "body": "Test",
-      "timestamp": 1697102804,
-      "id": 6
-    },
-    {
-      "authorId": 1,
-      "body": "C'est moi thibault",
-      "timestamp": 1697104742,
-      "id": 7
-    },
-    {
-      "authorId": 1,
-      "conversationId": "3",
-      "body": "test c'est machin",
-      "timestamp": 1697104996,
-      "id": 8
-    },
-    {
-      "authorId": 1,
       "conversationId": "3",
       "body": "Test elodie",
       "timestamp": 1697105036,
@@ -107,6 +97,13 @@
       "body": "test",
       "timestamp": 1697105407,
       "id": 12
+    },
+    {
+      "authorId": 1,
+      "conversationId": "1",
+      "body": "test",
+      "timestamp": 1697108489,
+      "id": 13
     }
   ],
   "users": [
@@ -129,6 +126,16 @@
       "id": 4,
       "nickname": "Elodie",
       "token": "dummyToken456"
+    },
+    {
+      "id": 5,
+      "nickname": "Jean",
+      "token": "dummyToken458"
+    },
+    {
+      "id": 6,
+      "nickname": "Michelle",
+      "token": "dummyToken459"
     }
   ]
 }

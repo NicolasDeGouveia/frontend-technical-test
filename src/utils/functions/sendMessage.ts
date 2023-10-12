@@ -1,7 +1,8 @@
 import { Message } from "../../types/message";
 
 export async function SendMessage(conversationId:number, authorId: number,  newMessage: string, setMessageData:React.Dispatch<React.SetStateAction<Message[]>>,messageData: Message[], setNewMessage:React.Dispatch<React.SetStateAction<string>>){
-  const currentTimestamp = Math.floor(Date.now() / 1000);
+    // Retrieve the current timestamp  
+    const currentTimestamp = Math.floor(Date.now() / 1000);
 
     const response = await fetch(`http://localhost:3005/messages/${conversationId}`, {
       method: 'POST',
