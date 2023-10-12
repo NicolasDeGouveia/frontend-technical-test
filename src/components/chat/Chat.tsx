@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Message } from "../../types/message";
 import { SendMessage } from "../../utils/functions/sendMessage";
+import { useAuth } from "../../context/AuthContext";
 
 type ChatProps = {
   messages: Message[];
+  conversationId: number;
 };
 
-const Chat = ({ messages }: ChatProps) => {
+const Chat = ({ messages, conversationId }: ChatProps) => {
   const [messageData, setMessageData] = useState(messages);
   const [authorNameMap, setAuthorNameMap] = useState({});
   const [newMessage, setNewMessage] = useState<string>("");
-  const conversationId = messages[0].conversationId || null;
-
+  const { user } = useAuth();
+  const authorId = user?.id;
   useEffect(() => {
     // Function to fetch user names based on authorId
     const fetchUserNames = async () => {
@@ -37,8 +39,7 @@ const Chat = ({ messages }: ChatProps) => {
     };
 
     fetchUserNames();
-  }, []);
-  console.log(authorNameMap);
+  }, [messageData, authorNameMap]);
 
   return (
     <div className="max-w-[77.5rem] m-auto flex h-screen  flex-col ">
@@ -49,7 +50,7 @@ const Chat = ({ messages }: ChatProps) => {
             <div
               key={message.id}
               className={`${
-                message.authorId === 1
+                message.authorId === authorId
                   ? "self-end bg-blue-500 text-white"
                   : "self-start bg-gray-200"
               } rounded-lg p-2 flex items-start flex-col `}
@@ -75,6 +76,7 @@ const Chat = ({ messages }: ChatProps) => {
           onClick={() =>
             SendMessage(
               conversationId,
+              authorId,
               newMessage,
               setMessageData,
               messageData,
