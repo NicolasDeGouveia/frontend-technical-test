@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import BurgerMenu from "../generic/BurgerMenu";
 import { useAuth } from "../../context/AuthContext";
+import Error from "../error/Error";
 
 const NavbarMobile = () => {
   const [userNickname, setUserNickname] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { login, user, logout } = useAuth();
+  const { login, user, logout, errorFetchUser } = useAuth();
 
   return (
     <>
@@ -32,28 +33,33 @@ const NavbarMobile = () => {
               </>
             )}
             {!user && (
-              <li>
-                <form
-                  onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
-                    login(event, userNickname), setUserNickname("");
-                  }}
-                  className="flex flex-col gap-2"
-                >
-                  <input
-                    type="text"
-                    className="px-4 py-2 border-b border-black rounded-lg outline-none"
-                    placeholder="Nom d'utilisateur"
-                    value={userNickname}
-                    onChange={(e) => setUserNickname(e.target.value)}
-                  />
-                  <button
-                    disabled={userNickname.length <= 0}
-                    className="p-1 border border-black rounded-lg"
+              <>
+                {errorFetchUser && <Error errorMessage={errorFetchUser} />}
+                <li>
+                  <form
+                    onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+                      login(event, userNickname), setUserNickname("");
+                    }}
+                    className="flex flex-col gap-2"
                   >
-                    Se Connecter
-                  </button>
-                </form>
-              </li>
+                    <input
+                      type="text"
+                      className={`px-4 py-2 border-b border-black rounded-lg outline-none ${
+                        errorFetchUser ? "mt-4" : ""
+                      }`}
+                      placeholder="Nom d'utilisateur"
+                      value={userNickname}
+                      onChange={(e) => setUserNickname(e.target.value)}
+                    />
+                    <button
+                      disabled={userNickname.length <= 0}
+                      className="p-1 border border-black rounded-lg"
+                    >
+                      Se Connecter
+                    </button>
+                  </form>
+                </li>
+              </>
             )}
           </ul>
         </div>

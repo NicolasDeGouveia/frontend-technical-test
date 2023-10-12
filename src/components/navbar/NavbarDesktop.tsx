@@ -5,7 +5,6 @@ import Error from "../error/Error";
 const NavbarDesktop = () => {
   const [userNickname, setUserNickname] = useState<string>("");
   const { login, user, logout, errorFetchUser } = useAuth();
-  console.log(errorFetchUser);
 
   return (
     <ul className="items-center hidden md:flex">
