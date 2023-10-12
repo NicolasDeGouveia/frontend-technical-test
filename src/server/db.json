@@ -60,29 +60,34 @@
       "body": "Bonjour c'est un test",
       "timestamp": 1625648675,
       "id": 5
+    },
+    {
+      "authorId": 1,
+      "body": "Test",
+      "timestamp": 1697102804,
+      "id": 6
     }
-
   ],
   "users": [
     {
       "id": 1,
       "nickname": "Thibaut",
-      "token": "xxxx"
+      "token": "abc123xyz456"
     },
     {
       "id": 2,
       "nickname": "Jeremie",
-      "token": "xxxx"
+      "token": "token987654"
     },
     {
       "id": 3,
       "nickname": "Patrick",
-      "token": "xxxx"
+      "token": "testToken123"
     },
     {
       "id": 4,
       "nickname": "Elodie",
-      "token": "xxxx"
+      "token": "dummyToken456"
     }
   ]
 }

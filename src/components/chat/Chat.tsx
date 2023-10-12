@@ -10,7 +10,7 @@ const Chat = ({ messages }: ChatProps) => {
   const [messageData, setMessageData] = useState(messages);
   const [authorNameMap, setAuthorNameMap] = useState({});
   const [newMessage, setNewMessage] = useState<string>("");
-  const conversationId = messages[0].conversationId;
+  const conversationId = messages[0].conversationId || null;
 
   useEffect(() => {
     // Function to fetch user names based on authorId
@@ -38,11 +38,12 @@ const Chat = ({ messages }: ChatProps) => {
 
     fetchUserNames();
   }, []);
+  console.log(authorNameMap);
 
   return (
     <div className="max-w-[77.5rem] m-auto flex h-screen  flex-col ">
       <div className="flex-grow overflow-y-auto">
-        <div className="flex flex-col space-y-2 p-4">
+        <div className="flex flex-col p-4 space-y-2">
           {/* <!-- Individual chat message --> */}
           {messageData.map((message) => (
             <div
@@ -61,16 +62,16 @@ const Chat = ({ messages }: ChatProps) => {
           ))}
         </div>
       </div>
-      <div className="p-4 flex items-center">
+      <div className="flex items-center p-4">
         <input
           type="text"
           placeholder="Type your message..."
-          className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg"
           onChange={(e) => setNewMessage(e.target.value)}
           value={newMessage}
         />
         <button
-          className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg"
+          className="px-4 py-2 ml-2 text-white bg-blue-500 rounded-lg"
           onClick={() =>
             SendMessage(
               conversationId,

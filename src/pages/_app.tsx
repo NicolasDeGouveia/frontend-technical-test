@@ -1,14 +1,12 @@
 import type { AppProps } from "next/app";
-import { getLoggedUserId } from "../utils/getLoggedUserId";
 import "../styles/globals.css";
 import { AuthProvider } from "../context/AuthContext";
-
-// Default way to get a logged user
-export const loggedUserId = getLoggedUserId();
+import Navbar from "../components/navbar/Navbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
+      <Navbar />
       <Component {...pageProps} />
     </AuthProvider>
   );
