@@ -23,6 +23,8 @@ const Home = (): ReactElement => {
     }
   }, [user]);
 
+  console.log(conversationsData);
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 ">
       {user && (
@@ -42,7 +44,9 @@ const Home = (): ReactElement => {
         </>
       )}
       {!user && (
-        <div>Merci de vous connecter afin de voir vos conversations.</div>
+        <div>
+          Merci de vous connecter afin de voir ou commencer une conversation.
+        </div>
       )}
     </div>
   );
