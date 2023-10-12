@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { User } from "../types/user";
 import { getAllUsers } from "../utils/functions/getAllUsers";
+import { deleteCookie, setCookie } from "cookies-next";
 
 type AuthContextType = {
   user: User | null;
@@ -68,12 +69,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (userInDatabase) {
       setUser(userInDatabase);
       localStorage.setItem("userToken", userInDatabase.token);
+      setCookie("userToken", userInDatabase.token);
     }
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem("userToken");
+    deleteCookie("userToken");
   };
 
   const contextValue: AuthContextType = {

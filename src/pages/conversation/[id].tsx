@@ -1,11 +1,8 @@
 import React from "react";
-import { useRouter } from "next/router";
 import Chat from "../../components/chat/Chat";
-type Props = {};
+import { getCookie } from "cookies-next";
 
 const ConversationPage = ({ messages, conversationId }) => {
-  const router = useRouter();
-
   return (
     <div className="bg-gray-100">
       {<Chat messages={messages} conversationId={conversationId} />}
@@ -15,9 +12,19 @@ const ConversationPage = ({ messages, conversationId }) => {
 
 export default ConversationPage;
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ req, res, params }) {
+  const cookie = getCookie("userToken", { req, res });
   const response = await fetch(`http://localhost:3005/messages/${params.id}`);
   const data = await response.json();
+
+  if (!cookie) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  }
 
   return {
     props: { messages: data, conversationId: params.id },
