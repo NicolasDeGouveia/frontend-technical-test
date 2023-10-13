@@ -5,3 +5,7 @@
 body {
     background-color: rgba(229, 231, 235, 1);
 }
+
+#__next {
+    height: 100vh;
+}

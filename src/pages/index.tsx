@@ -40,7 +40,7 @@ const Home = (): ReactElement => {
   }, [user, refreshData]);
 
   return (
-    <>
+    <main>
       {user && (
         <>
           <div
@@ -64,7 +64,7 @@ const Home = (): ReactElement => {
           )}
         </>
       )}
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-center ">
         {user && (
           <>
             {conversationsData.map((conversation: Conversation, index) => (
@@ -87,7 +87,7 @@ const Home = (): ReactElement => {
           </div>
         )}
       </div>
-    </>
+    </main>
   );
 };
 
