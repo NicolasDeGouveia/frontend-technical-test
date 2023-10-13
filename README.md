@@ -1,6 +1,6 @@
-# Projet Messenger
+# Front-end Technical Test
 
-Messenger est une application web conçue pour permettre aux utilisateurs de discuter et d'également créer des conversations.
+Il s'agit d'une application web conçue pour permettre aux utilisateurs de discuter et d'également créer des conversations.
 
 ## Prérequis
 
