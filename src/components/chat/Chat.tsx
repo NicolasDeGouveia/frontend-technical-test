@@ -63,7 +63,7 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
           ))}
         </div>
       </div>
-      <div className="flex items-center p-4">
+      <form className="flex items-center p-4">
         <input
           type="text"
           placeholder="Type your message..."
@@ -73,21 +73,22 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
         />
         <button
           className="px-4 py-2 ml-2 text-white bg-blue-500 rounded-lg"
-          onClick={() =>
-            SendMessage(
-              conversationId,
-              authorId,
-              newMessage,
-              setMessageData,
-              messageData,
-              setNewMessage
-            )
-          }
+          onClick={(e) => {
+            e.preventDefault(),
+              SendMessage(
+                conversationId,
+                authorId,
+                newMessage,
+                setMessageData,
+                messageData,
+                setNewMessage
+              );
+          }}
           disabled={newMessage === ""}
         >
           Send
         </button>
-      </div>
+      </form>
     </div>
   );
 };

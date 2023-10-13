@@ -75,7 +75,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setCookie("userToken", userInDatabase.token);
       notifyMsgSuccess("Connexion réussi");
     } else if (!userInDatabase) {
-      notifyMsgError("Cet utilisateur est introuvable.");
+      notifyMsgError(`L'utilisateur ${nickname} est introuvable`);
     } else {
       notifyMsgError(
         "Une erreur est survenue lors de la tentative de connexion"
