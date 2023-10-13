@@ -31,7 +31,7 @@ const Home = (): ReactElement => {
       <Head>
         <title>Home Page</title>
       </Head>
-      <main className="px-10 md:px-20">
+      <div className="px-10 md:px-20">
         {user && (
           <>
             <div
@@ -82,7 +82,7 @@ const Home = (): ReactElement => {
             Merci de vous connecter afin de voir ou commencer une conversation.
           </div>
         )}
-      </main>
+      </div>
     </>
   );
 };

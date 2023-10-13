@@ -8,7 +8,7 @@ import { notifyMsgError, notifyMsgSuccess } from "../../notify/Notify";
     nickname: string
   ) => {
     // Simulate a database lookup based on nickname
-    const userInDatabase = allUsers.find((user) => user.nickname === nickname);
+    const userInDatabase = allUsers.find((user) => user.nickname.toLowerCase() === nickname.toLowerCase());
     if (userInDatabase) {
       setUser(userInDatabase);
       localStorage.setItem("userToken", userInDatabase.token);
