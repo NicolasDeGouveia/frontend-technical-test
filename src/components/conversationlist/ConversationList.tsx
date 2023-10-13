@@ -21,7 +21,7 @@ const ConversationList = ({
   const day = date.getDate();
 
   return (
-    <div className={`${style.card}`}>
+    <div className="p-4 bg-white border border-black rounded-lg hover:bg-gray-100">
       <div className="flex items-center">
         <Image
           src={picture_url}
@@ -46,10 +46,6 @@ const ConversationList = ({
 };
 
 export default ConversationList;
-
-const style = {
-  card: "rounded-lg mx-auto max-w-[77rem] relative border-2 border-black bg-transparent py-2.5 px-5 my-4 font-medium uppercase text-black transition-colors before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:origin-top-left before:scale-x-0 before:bg-[#1654b1] before:transition-transform before:duration-300 before:content-[''] hover:text-white before:hover:scale-x-100 hover:border-white",
-};
 
 const pictureStyle = {
   borderRadius: "9999px",

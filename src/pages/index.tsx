@@ -30,6 +30,7 @@ const Home = (): ReactElement => {
     <>
       <Head>
         <title>Home Page</title>
+        <meta name="description" content="A messaging client for the web" />
       </Head>
       <div className="px-10 md:px-20">
         {user && (

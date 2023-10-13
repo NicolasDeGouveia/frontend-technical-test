@@ -1,71 +1,77 @@
-# Context :
+# Projet Messenger
 
-At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
+Messenger est une application web conçue pour permettre aux utilisateurs de discuter et d'également créer des conversations.
 
-Your job is to create the interface to consult those messages.
-The interface needs to work on both desktop & mobile devices.
+## Prérequis
 
-In addition to your code, a README explaining your thought process and your choices would be appreciated.
+Avant de commencer, assurez-vous d'avoir les prérequis suivants installés sur votre machine :
 
-# Exercise :
+- Node.js version 18.X ou supérieure. Node.js est une plateforme logicielle qui vous permet d'exécuter du code JavaScript sur votre machine. Vous pouvez télécharger Node.js à partir de [ici](https://nodejs.org/en/download/).
+- Git, un système de contrôle de version. Git est un outil essentiel pour tout développeur, permettant de suivre les modifications apportées au code et de collaborer avec d'autres développeurs. Vous pouvez le télécharger à partir de [ici](https://git-scm.com/downloads).
 
-- Display a list of all the conversations
-- Allow the user to select a conversation
-  - Inside the conversation, there is a list of all the messages between these two users.
-  - As a user, you can type and send new messages in this conversation
+## Résultat test de performance 
 
-**As your application can be used by millions of users, make sure to provide some robust safety guards.**
+![résultat test de performance](/public/performance.png)
 
-### Sketches :
+## Commencer
 
-Obvisouly, it is up to you to make something nice and pretty, you are free to design it the way you like. The sketches are here to give you an idea on how it should look.
+Suivez ces étapes pour installer et exécuter le projet sur votre machine locale :
 
-<details>
-  <summary>Click to see the sketches</summary>
-  
-Mobile list :
+### 1. Cloner le dépôt
 
-![](./sketches/list-mobile.jpg)
+Ouvrez un terminal et exécutez la commande suivante pour cloner le dépôt :
 
-Desktop list :
+```bash
+git clone https://github.com/NicolasDeGouveia/frontend-technical-test
+```
 
-![](./sketches/list-desktop.jpg)
+### 2. Accéder au répertoire du projet
 
-Mobile conversation :
+Naviguez vers le répertoire du projet en utilisant la commande suivante :
 
-![](./sketches/conv-mobile.jpg)
+```bash
+cd frontend-technical-test
+```
 
-Desktop conversation :
+### 3. Installer les dépendances
 
-![](./sketches/conv-desktop.jpg)
+Installez toutes les dépendances nécessaires en utilisant la commande suivante :
 
-</details>
+```bash
+npm install
+```
 
-### API :
+### 4. Créer le fichier .env.local
 
-You can find the API swagger file in `docs/api-swagger.yaml`.
+Assurez-vous que vous êtes dans le répertoire du projet (`frontend-technical-test`) et créez un fichier `.env.local` à la racine du projet.
 
-For a better readibility, you can view it on [https://leboncoin.tech/frontend-technical-test/](https://leboncoin.tech/frontend-technical-test/).
+### 5. Ajouter l'URL de l'API au fichier .env.local
 
----
+Ajoutez l'URL de l'API suivantes au fichier `.env.local` :
 
-## Bonus 1 :
+```plaintext
+NEXT_PUBLIC_API_URL='API URL'
 
-We provide some conversation samples, but can you improve the app so the user can now create new conversations ?
+Remplacez 'API URL' par l'URL de votre API.
+```
 
-## Bonus 2 :
+### 6. Exécuter le serveur
 
-Our infrastructure is a bit shaky.. Sometimes the servers are crashing. “It’s not you, it’s me”, but maybe you can display something nice to warn the user and handle it gracefully.
+Exécutez le serveur en utilisant la commande suivante :
 
-## Do you want to make the app even better ?
+```bash
+npm run start-server
+```
 
-Feel free to make as many improvements as you like.
-We love creativity and technical challenges.
+### 7. Exécuter l'application
 
-If you are out of ideas, here are some thoughts :
+ Dans un autre terminal, exécutez l'application en utilisant la commande suivante :
 
-- As we want to reach our users anywhere, we need to make sure the app is performing well. What can you do to make it really fast ?
+```bash
+npm run build
+npm run start
+```
 
-- Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
+### 7. Accéder à l'application
 
-- We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
+Ouvrez votre navigateur web et accédez à [http://localhost:3000](http://localhost:3000) pour voir le résultat.

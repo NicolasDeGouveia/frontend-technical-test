@@ -27,7 +27,7 @@ const CreateConversation = ({
   const filteredUsers = useFilteredUsers(currentUserName);
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 m-auto mt-4 bg-white rounded-lg w-fit">
+    <div className="flex flex-col items-center justify-center p-6 m-auto my-8 bg-white rounded-lg w-fit">
       <h2 className="mb-4 text-lg font-bold">
         Commencer une nouvelle conversation
       </h2>
