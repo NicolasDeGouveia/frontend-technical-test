@@ -62,9 +62,10 @@ const CreateConversation = ({
             setToggleButton(false);
         }}
         disabled={selectedRecipient === null}
-        className={`px-4 py-2  text-white bg-blue-500 rounded-lg ${
-          selectedRecipient === null ? "" : "bg-blue-600 hover:bg-blue-500"
+        className={`px-4 py-2  text-white bg-[#1654b1] rounded-lg ${
+          selectedRecipient === null ? "" : "bg-[#1654b1] hover:bg-blue-500"
         }`}
+        aria-label="Commencer une conversation"
       >
         Commencer la conversation
       </button>

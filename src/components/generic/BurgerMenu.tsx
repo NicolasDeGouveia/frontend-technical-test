@@ -10,6 +10,7 @@ const BurgerMenu = ({ className, setIsOpen, isOpen }: MenuProps) => {
     <button
       className={`flex flex-col h-12 w-12  rounded justify-center items-center group bg-slate-300 ${className}`}
       onClick={() => setIsOpen(!isOpen)}
+      aria-label="ouvrir nagivation"
     >
       <div
         className={`${style.genericHamburgerLine} ${

@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import CreateConversation from "../components/createconversation/CreateConversation";
 import ConversationList from "../components/conversationlist/ConversationList";
 import { getConversationByUser } from "../utils/functions/getConversationByUser";
+import Head from "next/head";
 
 const Home = (): ReactElement => {
   const [conversationsData, setConversationsData] = useState<Conversation[]>(
@@ -24,52 +25,61 @@ const Home = (): ReactElement => {
   }, [user, refreshData]);
 
   return (
-    <main className="px-10 md:px-20">
-      {user && (
-        <>
-          <div
-            className="flex justify-center px-4 py-2 m-auto mt-2 mb-4 rounded-lg w-fit"
-            onClick={() => {
-              setToggleButton(true);
-            }}
-          >
-            <button className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
-              Nouvelle conversation
-            </button>
-          </div>
-          {toggleButton && (
-            <CreateConversation
-              conversations={conversationsData}
-              setRefreshData={setRefreshData}
-              setToggleButton={setToggleButton}
-            />
-          )}
-        </>
-      )}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
+    <>
+      <Head>
+        <title>Home Page</title>
+      </Head>
+      <main className="px-10 md:px-20">
         {user && (
           <>
-            {conversationsData.map((conversation: Conversation, index) => (
-              <React.Fragment
-                key={`${conversation.recipientId}-${conversation.senderId}`}
+            <div
+              className="flex justify-center px-4 py-2 m-auto mt-2 mb-4 rounded-lg w-fit"
+              onClick={() => {
+                setToggleButton(true);
+              }}
+            >
+              <button
+                className="px-4 py-2 text-white bg-[#1654b1] rounded-lg hover:bg-blue-600"
+                aria-label="Nouvelle conversation"
               >
-                <Link href={`/conversation/${conversation.id}`}>
-                  <ConversationList
-                    conversation={conversation}
-                    userId={user.id}
-                  />
-                </Link>
-              </React.Fragment>
-            ))}
+                Nouvelle conversation
+              </button>
+            </div>
+            {toggleButton && (
+              <CreateConversation
+                conversations={conversationsData}
+                setRefreshData={setRefreshData}
+                setToggleButton={setToggleButton}
+              />
+            )}
           </>
         )}
-        {!user && (
-          <div>
-            Merci de vous connecter afin de voir ou commencer une conversation.
-          </div>
-        )}
-      </div>
-    </main>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
+          {user && (
+            <>
+              {conversationsData.map((conversation: Conversation, index) => (
+                <React.Fragment
+                  key={`${conversation.recipientId}-${conversation.senderId}`}
+                >
+                  <Link href={`/conversation/${conversation.id}`}>
+                    <ConversationList
+                      conversation={conversation}
+                      userId={user.id}
+                    />
+                  </Link>
+                </React.Fragment>
+              ))}
+            </>
+          )}
+          {!user && (
+            <div>
+              Merci de vous connecter afin de voir ou commencer une
+              conversation.
+            </div>
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 

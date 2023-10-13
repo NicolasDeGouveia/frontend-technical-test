@@ -25,8 +25,9 @@ const NavbarMobile = () => {
                       logout();
                       setIsOpen(false);
                     }}
+                    aria-label="Se Déconnecter"
                   >
-                    Logout
+                    Se Déconnecter
                   </button>
                 </li>
               </>
@@ -51,6 +52,7 @@ const NavbarMobile = () => {
                   <button
                     disabled={userNickname.length <= 0}
                     className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                    aria-label="Se Connecter"
                   >
                     Se Connecter
                   </button>

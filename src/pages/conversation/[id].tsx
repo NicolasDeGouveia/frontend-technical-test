@@ -1,12 +1,18 @@
 import React from "react";
 import Chat from "../../components/chat/Chat";
 import { getCookie } from "cookies-next";
+import Head from "next/head";
 
 const ConversationPage = ({ messages, conversationId }) => {
   return (
-    <div className="bg-gray-200">
-      {<Chat messages={messages} conversationId={conversationId} />}
-    </div>
+    <>
+      <Head>
+        <title>Conversation</title>
+      </Head>
+      <div className="bg-gray-200">
+        {<Chat messages={messages} conversationId={conversationId} />}
+      </div>
+    </>
   );
 };
 

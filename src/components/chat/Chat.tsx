@@ -27,7 +27,10 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
   return (
     <>
       <div className="py-8 text-center">
-        <button className="px-4 py-2 text-blue-500 bg-transparent border border-blue-500 rounded-lg">
+        <button
+          className="px-4 py-2 text-blue-500 bg-transparent border border-blue-500 rounded-lg"
+          aria-label="retour"
+        >
           <Link href={"/"}>Retour</Link>
         </button>
       </div>
@@ -55,7 +58,7 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
             value={newMessage}
           />
           <button
-            className="px-4 py-2 ml-2 text-white bg-blue-500 rounded-lg"
+            className="px-4 py-2 ml-2 text-white bg-[#1654b1] rounded-lg"
             onClick={(e) => {
               e.preventDefault(),
                 SendMessage(
@@ -68,8 +71,9 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
                 );
             }}
             disabled={newMessage === ""}
+            aria-label="Envoyer"
           >
-            Send
+            Envoyer
           </button>
         </form>
       </div>

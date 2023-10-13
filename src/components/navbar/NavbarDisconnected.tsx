@@ -20,7 +20,10 @@ const NavbarDisconnected = () => {
           onChange={(e) => setUserNickname(e.target.value)}
         />
         <div>
-          <button className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+          <button
+            className="px-4 py-2 text-white bg-[#1654b1] rounded-lg hover:bg-blue-600"
+            aria-label="Se connecter"
+          >
             Se connecter
           </button>
         </div>
