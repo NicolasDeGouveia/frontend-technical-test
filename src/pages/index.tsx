@@ -6,6 +6,8 @@ import CreateConversation from "../components/createconversation/CreateConversat
 import ConversationList from "../components/conversationlist/ConversationList";
 import { getConversationByUser } from "../utils/functions/getConversationByUser";
 import Head from "next/head";
+import { getRecipientPicture } from "../utils/functions/getRecipientPicture";
+import { getAllUsers } from "../utils/functions/getAllUsers";
 
 const Home = (): ReactElement => {
   const [conversationsData, setConversationsData] = useState<Conversation[]>(
@@ -13,7 +15,7 @@ const Home = (): ReactElement => {
   );
   const [toggleButton, setToggleButton] = useState<boolean>(false);
   const [refreshData, setRefreshData] = useState<boolean>(false);
-  const { user } = useAuth();
+  const { user, allUsers } = useAuth();
 
   useEffect(() => {
     if (user) {
@@ -65,6 +67,11 @@ const Home = (): ReactElement => {
                     <ConversationList
                       conversation={conversation}
                       userId={user.id}
+                      picture_url={getRecipientPicture(
+                        user.id,
+                        conversation,
+                        allUsers
+                      )}
                     />
                   </Link>
                 </React.Fragment>

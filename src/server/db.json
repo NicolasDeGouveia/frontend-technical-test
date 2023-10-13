@@ -61,7 +61,7 @@
       "recipientNickname": "Elodie",
       "senderId": 3,
       "senderNickname": "Patrick",
-      "lastMessageTimestamp": 1697190015,
+      "lastMessageTimestamp": 1697193955,
       "id": 8
     }
   ],
@@ -197,27 +197,32 @@
     {
       "id": 1,
       "nickname": "Thibaut",
-      "token": "abc123xyz456"
+      "token": "abc123xyz456",
+      "picture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
     },
     {
       "id": 2,
       "nickname": "Jeremie",
-      "token": "token987654"
+      "token": "token987654",
+      "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
     },
     {
       "id": 3,
       "nickname": "Patrick",
-      "token": "testToken123"
+      "token": "testToken123",
+      "picture": "https://images.unsplash.com/photo-1595501894686-4e258c802d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
     },
     {
       "id": 4,
       "nickname": "Elodie",
-      "token": "dummyToken456"
+      "token": "dummyToken456",
+      "picture": "https://images.unsplash.com/photo-1551999695-bc520160d575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
     },
     {
       "id": 5,
       "nickname": "Michelle",
-      "token": "dummyToken459"
+      "token": "dummyToken459",
+      "picture": "https://images.unsplash.com/photo-1687360440741-f5df549b352d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80"
     }
   ]
 }

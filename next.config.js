@@ -9,4 +9,9 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: [
+      'images.unsplash.com'
+    ],
+  },
 }
