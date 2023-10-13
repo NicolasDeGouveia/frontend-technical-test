@@ -56,35 +56,32 @@ const Home = (): ReactElement => {
             )}
           </>
         )}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
-          {user && (
-            <>
-              {conversationsData.map((conversation: Conversation, index) => (
-                <React.Fragment
-                  key={`${conversation.recipientId}-${conversation.senderId}`}
-                >
-                  <Link href={`/conversation/${conversation.id}`}>
-                    <ConversationList
-                      conversation={conversation}
-                      userId={user.id}
-                      picture_url={getRecipientPicture(
-                        user.id,
-                        conversation,
-                        allUsers
-                      )}
-                    />
-                  </Link>
-                </React.Fragment>
-              ))}
-            </>
-          )}
-          {!user && (
-            <div>
-              Merci de vous connecter afin de voir ou commencer une
-              conversation.
-            </div>
-          )}
-        </div>
+        {user && (
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
+            {conversationsData.map((conversation: Conversation, index) => (
+              <React.Fragment
+                key={`${conversation.recipientId}-${conversation.senderId}`}
+              >
+                <Link href={`/conversation/${conversation.id}`}>
+                  <ConversationList
+                    conversation={conversation}
+                    userId={user.id}
+                    picture_url={getRecipientPicture(
+                      user.id,
+                      conversation,
+                      allUsers
+                    )}
+                  />
+                </Link>
+              </React.Fragment>
+            ))}
+          </div>
+        )}
+        {!user && (
+          <div className="text-center">
+            Merci de vous connecter afin de voir ou commencer une conversation.
+          </div>
+        )}
       </main>
     </>
   );

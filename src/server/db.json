@@ -71,6 +71,14 @@
       "senderNickname": "Patrick",
       "lastMessageTimestamp": 1697194146,
       "id": 9
+    },
+    {
+      "recipientId": 4,
+      "recipientNickname": "Elodie",
+      "senderId": 5,
+      "senderNickname": "Michelle",
+      "lastMessageTimestamp": 1697194265,
+      "id": 10
     }
   ],
   "messages": [
@@ -199,6 +207,13 @@
       "body": "test",
       "timestamp": 1697185653,
       "id": 22
+    },
+    {
+      "authorId": 5,
+      "conversationId": "10",
+      "body": "Hello",
+      "timestamp": 1697194311,
+      "id": 23
     }
   ],
   "users": [
