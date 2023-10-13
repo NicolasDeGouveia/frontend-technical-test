@@ -11,7 +11,7 @@ const NavbarMobile = () => {
     <>
       <BurgerMenu className="md:hidden" setIsOpen={setIsOpen} isOpen={isOpen} />
       {isOpen && (
-        <div className="absolute left-0 right-0 py-4 bg-gray-400 md:hidden top-28">
+        <div className="absolute left-0 right-0 z-10 py-4 bg-gray-600 md:hidden top-28">
           <ul className="flex flex-col items-center justify-center w-full px-4">
             {user && (
               <>
@@ -20,7 +20,7 @@ const NavbarMobile = () => {
                 </li>
                 <li>
                   <button
-                    className="p-1 border border-black rounded-lg"
+                    className="px-4 py-2 text-blue-500 bg-transparent border border-blue-500 rounded-lg"
                     onClick={() => {
                       logout();
                       setIsOpen(false);
@@ -35,7 +35,9 @@ const NavbarMobile = () => {
               <li>
                 <form
                   onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
-                    login(event, userNickname), setUserNickname("");
+                    login(event, userNickname),
+                      setUserNickname(""),
+                      setIsOpen(false);
                   }}
                   className="flex flex-col gap-2"
                 >
@@ -48,7 +50,7 @@ const NavbarMobile = () => {
                   />
                   <button
                     disabled={userNickname.length <= 0}
-                    className="p-1 border border-black rounded-lg"
+                    className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
                   >
                     Se Connecter
                   </button>

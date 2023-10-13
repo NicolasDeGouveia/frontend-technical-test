@@ -58,16 +58,18 @@ const CreateConversation = ({
     (user) => user.nickname !== currentUserName
   );
   return (
-    <div className="flex flex-col items-center justify-center p-4 m-auto mt-4 bg-white rounded-lg w-fit">
-      <h2 className="mb-2 text-lg font-bold">
+    <div className="flex flex-col items-center justify-center p-6 m-auto mt-4 bg-white rounded-lg w-fit">
+      <h2 className="mb-4 text-lg font-bold">
         Commencer une nouvelle conversation
       </h2>
-      <label>Selectionner un contact:</label>
+      <label>Contact:</label>
       <select
         onChange={handleRecipientChange}
         className="p-2 my-4 bg-gray-200 rounded-lg"
       >
-        <option value="">Selectionner un contact</option>
+        <option value="" disabled>
+          -- Selectionner un contact --
+        </option>
         {filteredUsers.map((user) => (
           <option key={user.id} value={user.id}>
             {user.nickname}
@@ -80,7 +82,9 @@ const CreateConversation = ({
           handleCreateConversation(), setToggleButton(false);
         }}
         disabled={selectedRecipient === null}
-        className="px-4 py-2 border border-black rounded-lg"
+        className={`px-4 py-2  text-white bg-blue-500 rounded-lg ${
+          selectedRecipient === null ? "" : "bg-blue-600 hover:bg-blue-500"
+        }`}
       >
         Commencer la conversation
       </button>

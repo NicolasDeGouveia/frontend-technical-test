@@ -14,7 +14,9 @@ const NavbarDesktop = () => {
             Bienvenue, <span className="font-bold">{user.nickname}</span>
           </li>
           <li onClick={logout}>
-            <Button name="Se Deconnecter" className="z-10" />
+            <button className="px-4 py-2 text-blue-500 bg-transparent border border-blue-500 rounded-lg">
+              Se déconnecter
+            </button>
           </li>
         </>
       )}
@@ -35,7 +37,9 @@ const NavbarDesktop = () => {
                 onChange={(e) => setUserNickname(e.target.value)}
               />
               <div>
-                <Button name="Se Connecter" className="z-10" />
+                <button className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                  Se connecter
+                </button>
               </div>
             </form>
           </li>
