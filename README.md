@@ -53,6 +53,7 @@ Ajoutez l'URL de l'API suivantes au fichier `.env.local` :
 NEXT_PUBLIC_API_URL='API URL'
 
 Remplacez 'API URL' par l'URL de votre API.
+Le port par défaut de l'API est 3005.
 ```
 
 ### 6. Exécuter le serveur
