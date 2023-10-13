@@ -11,7 +11,7 @@ const ConversationList = ({ conversation, userId }: ConversationListProps) => {
   const date = new Date(conversation.lastMessageTimestamp * 1000);
 
   // Get the month and day
-  const month = date.toLocaleString("en-US", { month: "short" }); // Change 'short' to 'long' for the full month name
+  const month = date.toLocaleString("en-US", { month: "short" });
   const day = date.getDate();
 
   return (

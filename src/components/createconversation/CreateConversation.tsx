@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { onCreateConversation } from "../../utils/functions/onCreateConversation";
 import { Conversation } from "../../types/conversation";
-import { notifyMsgError } from "../../utils/notify/Notify";
+import useFilteredUsers from "../../utils/hooks/useFilteredUsers";
+import { onChangeUserSelect } from "../../utils/functions/createonversation/onChangeUserSelect";
+import { conversationHandler } from "../../utils/functions/createonversation/conversationHandler";
 
 type CreateConversationProps = {
   conversations: Conversation[];
@@ -20,43 +21,11 @@ const CreateConversation = ({
   );
   const [selectedRecipientName, setSelectedRecipientName] =
     useState<string>("");
-  const { allUsers, user } = useAuth();
+  const { user } = useAuth();
   const userId = user.id;
-
   const currentUserName = user.nickname;
+  const filteredUsers = useFilteredUsers(currentUserName);
 
-  const handleRecipientChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const selectedIndex = event.target.selectedIndex;
-    const selectedOption = event.target.options[selectedIndex];
-    const recipientId = parseInt(event.target.value, 10);
-    const recipientName = selectedOption.text;
-    setSelectedRecipient(recipientId);
-    setSelectedRecipientName(recipientName);
-  };
-
-  const handleCreateConversation = () => {
-    const existingConversation = conversations.find(
-      (conversation) => conversation.recipientId === selectedRecipient
-    );
-
-    if (existingConversation) {
-      notifyMsgError("Une conversation avec cet utilisateur existe déjà.");
-    } else {
-      onCreateConversation(
-        userId,
-        selectedRecipient,
-        selectedRecipientName,
-        currentUserName,
-        setRefreshData
-      );
-    }
-  };
-
-  const filteredUsers = allUsers.filter(
-    (user) => user.nickname !== currentUserName
-  );
   return (
     <div className="flex flex-col items-center justify-center p-6 m-auto mt-4 bg-white rounded-lg w-fit">
       <h2 className="mb-4 text-lg font-bold">
@@ -64,7 +33,9 @@ const CreateConversation = ({
       </h2>
       <label>Contact:</label>
       <select
-        onChange={handleRecipientChange}
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+          onChangeUserSelect(e, setSelectedRecipient, setSelectedRecipientName)
+        }
         className="p-2 my-4 bg-gray-200 rounded-lg"
       >
         <option value="" disabled>
@@ -79,7 +50,16 @@ const CreateConversation = ({
 
       <button
         onClick={() => {
-          handleCreateConversation(), setToggleButton(false);
+          conversationHandler(
+            conversations,
+            selectedRecipient,
+            selectedRecipientName,
+            userId,
+            currentUserName,
+            setRefreshData,
+            setToggleButton
+          ),
+            setToggleButton(false);
         }}
         disabled={selectedRecipient === null}
         className={`px-4 py-2  text-white bg-blue-500 rounded-lg ${

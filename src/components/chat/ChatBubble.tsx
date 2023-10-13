@@ -9,9 +9,6 @@ type ChatBubbleProps = {
 };
 
 const ChatBubble = ({ message, authorNameMap, authorId }: ChatBubbleProps) => {
-  console.log(message);
-  console.log(authorNameMap);
-
   return (
     <div
       key={message.id}
