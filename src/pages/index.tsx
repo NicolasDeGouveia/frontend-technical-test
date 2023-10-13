@@ -3,8 +3,8 @@ import { Conversation } from "../types/conversation";
 import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 import CreateConversation from "../components/createconversation/CreateConversation";
-import Button from "../components/generic/Button";
 import ConversationList from "../components/conversationlist/ConversationList";
+import { getConversationByUser } from "../utils/functions/getConversationByUser";
 
 const Home = (): ReactElement => {
   const [conversationsData, setConversationsData] = useState<Conversation[]>(
@@ -15,19 +15,8 @@ const Home = (): ReactElement => {
   const { user } = useAuth();
 
   useEffect(() => {
-    async function getConversationByUser(userId: number) {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/conversations/${userId}`
-        );
-        const data = await response.json();
-        setConversationsData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
     if (user) {
-      getConversationByUser(user.id);
+      getConversationByUser(user.id, setConversationsData);
     }
     if (refreshData) {
       setRefreshData(false);

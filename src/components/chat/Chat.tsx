@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Message } from "../../types/message";
 import { SendMessage } from "../../utils/functions/sendMessage";
 import { useAuth } from "../../context/AuthContext";
-import moment from "moment";
+
 import Link from "next/link";
+import { getUserNameById } from "../../utils/functions/getUserNameById";
+import ChatBubble from "./ChatBubble";
 
 type ChatProps = {
   messages: Message[];
@@ -16,32 +18,10 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
   const [newMessage, setNewMessage] = useState<string>("");
   const { user } = useAuth();
   const authorId = user?.id;
-  const timestamp = Date.now();
+
   useEffect(() => {
     // Function to fetch user names based on authorId
-    const fetchUserNames = async () => {
-      const uniqueAuthorIds = Array.from(
-        new Set(messageData.map((message) => message.authorId))
-      );
-
-      for (const authorId of uniqueAuthorIds) {
-        if (!authorNameMap[authorId]) {
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/user/${authorId}`
-          );
-          if (response.ok) {
-            const userData = await response.json();
-
-            setAuthorNameMap((prevMap) => ({
-              ...prevMap,
-              [authorId]: userData[0].nickname,
-            }));
-          }
-        }
-      }
-    };
-
-    fetchUserNames();
+    getUserNameById(messageData, authorNameMap, setAuthorNameMap);
   }, [messageData, authorNameMap]);
 
   return (
@@ -55,23 +35,14 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
         <div className="flex-grow overflow-y-auto">
           <div className="flex flex-col p-4 space-y-2">
             {/* <!-- Individual chat message --> */}
-            {messageData.map((message) => (
-              <div
-                key={message.id}
-                className={`${
-                  message.authorId === authorId
-                    ? "self-end bg-blue-500 text-white"
-                    : "self-start bg-white"
-                } rounded-lg p-2 flex items-start flex-col `}
-              >
-                <span className="font-bold ">
-                  {authorNameMap[message.authorId] || "Unknown User"}
-                </span>
-                <p className="py-2 text-lg">{message.body}</p>
-                <div className="text-xs">
-                  {moment.unix(message.timestamp).format("MM/DD/YY, h:mmA")}
-                </div>
-              </div>
+            {messageData.map((message, index: number) => (
+              <React.Fragment key={index}>
+                <ChatBubble
+                  message={message}
+                  authorId={authorId}
+                  authorNameMap={authorNameMap}
+                />
+              </React.Fragment>
             ))}
           </div>
         </div>
