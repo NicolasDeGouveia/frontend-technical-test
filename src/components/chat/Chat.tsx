@@ -52,7 +52,7 @@ const Chat = ({ messages, conversationId }: ChatProps) => {
               className={`${
                 message.authorId === authorId
                   ? "self-end bg-blue-500 text-white"
-                  : "self-start bg-gray-200"
+                  : "self-start bg-white"
               } rounded-lg p-2 flex items-start flex-col `}
             >
               <span className="mr-2 font-bold">

@@ -1,10 +1,10 @@
 import React, { useEffect, type ReactElement, useState } from "react";
-import List from "../components/conversationlist/ConversationList";
 import { Conversation } from "../types/conversation";
 import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 import CreateConversation from "../components/createconversation/CreateConversation";
 import Button from "../components/generic/Button";
+import ConversationList from "../components/conversationlist/ConversationList";
 
 const Home = (): ReactElement => {
   const [conversationsData, setConversationsData] = useState<Conversation[]>(
@@ -35,7 +35,7 @@ const Home = (): ReactElement => {
   }, [user, refreshData]);
 
   return (
-    <main>
+    <main className="px-10 md:px-20">
       {user && (
         <>
           <div
@@ -57,18 +57,18 @@ const Home = (): ReactElement => {
           )}
         </>
       )}
-      <div className="flex flex-col items-center justify-center ">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
         {user && (
           <>
             {conversationsData.map((conversation: Conversation, index) => (
               <React.Fragment
                 key={`${conversation.recipientId}-${conversation.senderId}`}
               >
-                <Link
-                  className="w-3/4 md:w-2/4"
-                  href={`/conversation/${conversation.id}`}
-                >
-                  <List conversation={conversation} userId={user.id} />
+                <Link href={`/conversation/${conversation.id}`}>
+                  <ConversationList
+                    conversation={conversation}
+                    userId={user.id}
+                  />
                 </Link>
               </React.Fragment>
             ))}
