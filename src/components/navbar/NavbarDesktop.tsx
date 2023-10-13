@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import Error from "../error/Error";
 import Button from "../generic/Button";
 
 const NavbarDesktop = () => {
   const [userNickname, setUserNickname] = useState<string>("");
-  const { login, user, logout, errorFetchUser } = useAuth();
+  const { login, user, logout } = useAuth();
 
   return (
     <ul className="items-center hidden md:flex">
@@ -21,7 +20,6 @@ const NavbarDesktop = () => {
       )}
       {!user && (
         <>
-          {errorFetchUser && <Error errorMessage={errorFetchUser} />}
           <li>
             <form
               onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
@@ -31,9 +29,7 @@ const NavbarDesktop = () => {
             >
               <input
                 type="text"
-                className={`px-4 py-2 mr-4 bg-gray-100 border-b border-black outline-none ${
-                  errorFetchUser ? "ml-4" : ""
-                }`}
+                className="px-4 py-2 mr-4 bg-gray-100 border-b border-black outline-none "
                 placeholder="Nom d'utilisateur"
                 value={userNickname}
                 onChange={(e) => setUserNickname(e.target.value)}

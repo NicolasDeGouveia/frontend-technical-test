@@ -2,22 +2,18 @@ import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { onCreateConversation } from "../../utils/functions/onCreateConversation";
 import { Conversation } from "../../types/conversation";
-import Button from "../generic/Button";
+import { notifyMsgError } from "../../utils/notify/Notify";
 
 type CreateConversationProps = {
   conversations: Conversation[];
-  setError: React.Dispatch<React.SetStateAction<string>>;
   setRefreshData: React.Dispatch<React.SetStateAction<boolean>>;
   setToggleButton: React.Dispatch<React.SetStateAction<boolean>>;
-  setSuccess: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const CreateConversation = ({
   conversations,
-  setError,
   setRefreshData,
   setToggleButton,
-  setSuccess,
 }: CreateConversationProps) => {
   const [selectedRecipient, setSelectedRecipient] = useState<number | null>(
     null
@@ -46,16 +42,14 @@ const CreateConversation = ({
     );
 
     if (existingConversation) {
-      setError("Une conversation avec cet utilisateur existe déjà.");
+      notifyMsgError("Une conversation avec cet utilisateur existe déjà.");
     } else {
       onCreateConversation(
         userId,
         selectedRecipient,
         selectedRecipientName,
         currentUserName,
-        setSuccess,
-        setRefreshData,
-        setError
+        setRefreshData
       );
     }
   };
@@ -82,7 +76,9 @@ const CreateConversation = ({
       </select>
 
       <button
-        onClick={() => handleCreateConversation()}
+        onClick={() => {
+          handleCreateConversation(), setToggleButton(false);
+        }}
         disabled={selectedRecipient === null}
         className="px-4 py-2 border border-black rounded-lg"
       >

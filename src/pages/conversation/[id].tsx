@@ -14,7 +14,9 @@ export default ConversationPage;
 
 export async function getServerSideProps({ req, res, params }) {
   const cookie = getCookie("userToken", { req, res });
-  const response = await fetch(`http://localhost:3005/messages/${params.id}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/messages/${params.id}`
+  );
   const data = await response.json();
 
   if (!cookie) {

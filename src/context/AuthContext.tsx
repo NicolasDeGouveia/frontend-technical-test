@@ -10,13 +10,13 @@ import { User } from "../types/user";
 import { getAllUsers } from "../utils/functions/getAllUsers";
 import { deleteCookie, setCookie } from "cookies-next";
 import { useRouter } from "next/router";
+import { notifyMsgError, notifyMsgSuccess } from "../utils/notify/Notify";
 
 type AuthContextType = {
   user: User | null;
   login: (event: React.FormEvent<HTMLFormElement>, nickname: string) => void;
   logout: () => void;
   allUsers: User[];
-  errorFetchUser: string | null;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -28,7 +28,6 @@ type AuthProviderProps = {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [allUsers, setAllUsers] = useState<User[]>([]); // State to store all users
-  const [errorFetchUser, setErrorFetchUser] = useState<string>(undefined);
   const router = useRouter();
 
   useEffect(() => {
@@ -74,10 +73,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setUser(userInDatabase);
       localStorage.setItem("userToken", userInDatabase.token);
       setCookie("userToken", userInDatabase.token);
+      notifyMsgSuccess("Connexion réussi");
     } else if (!userInDatabase) {
-      setErrorFetchUser("Cet utilisateur est introuvable.");
+      notifyMsgError("Cet utilisateur est introuvable.");
     } else {
-      setErrorFetchUser(
+      notifyMsgError(
         "Une erreur est survenue lors de la tentative de connexion"
       );
     }
@@ -95,7 +95,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     login,
     logout,
     allUsers,
-    errorFetchUser,
   };
 
   return (

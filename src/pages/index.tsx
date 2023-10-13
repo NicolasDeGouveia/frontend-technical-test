@@ -4,9 +4,6 @@ import { Conversation } from "../types/conversation";
 import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 import CreateConversation from "../components/createconversation/CreateConversation";
-import Error from "../components/error/Error";
-import Success from "../components/success/Success";
-import { useRouter } from "next/router";
 import Button from "../components/generic/Button";
 
 const Home = (): ReactElement => {
@@ -15,8 +12,6 @@ const Home = (): ReactElement => {
   );
   const [toggleButton, setToggleButton] = useState<boolean>(false);
   const [refreshData, setRefreshData] = useState<boolean>(false);
-  const [error, setError] = useState<string>(undefined);
-  const [success, setSuccess] = useState<string>(undefined);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -51,15 +46,11 @@ const Home = (): ReactElement => {
           >
             <Button name="Nouvelle Conversation" />
           </div>
-          {error && <Error errorMessage={error} />}
-          {success && <Success successMessage={success} />}
           {toggleButton && (
             <CreateConversation
               conversations={conversationsData}
-              setError={setError}
               setRefreshData={setRefreshData}
               setToggleButton={setToggleButton}
-              setSuccess={setSuccess}
             />
           )}
         </>

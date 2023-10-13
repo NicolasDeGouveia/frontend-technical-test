@@ -1,4 +1,6 @@
-export async function onCreateConversation(userId: number,selectedRecipient: number, selectedRecipientName: string, currentUserName: string, setSuccess: React.Dispatch<React.SetStateAction<string>> , setRefreshData: React.Dispatch<React.SetStateAction<boolean>>, setError:React.Dispatch<React.SetStateAction<string>> ){
+import { notifyMsgError, notifyMsgSuccess } from "../notify/Notify";
+
+export async function onCreateConversation(userId: number,selectedRecipient: number, selectedRecipientName: string, currentUserName: string,  setRefreshData: React.Dispatch<React.SetStateAction<boolean>> ){
     // Retrieve the current timestamp  
     const currentTimestamp = Math.floor(Date.now() / 1000);
 
@@ -17,10 +19,10 @@ export async function onCreateConversation(userId: number,selectedRecipient: num
     });
 
     if (response.ok) {
-        setSuccess('La conversation a bien été créé')
-        setRefreshData(true)
+      notifyMsgSuccess('La conversation a bien été créé')
+      setRefreshData(true)
     } else {
-        setError('Un problème est survenu au moment de la création de la conversation. Veuillez réssayer ultérieurement.')
+      notifyMsgError('Un problème est survenu. Veuillez réssayer ultérieurement.')
     }
     
   };
